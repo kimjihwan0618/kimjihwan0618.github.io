@@ -97,18 +97,6 @@
         {% endif %} {% endfor %}
       </ul>
       <!-- GitHub -->
-      <!-- <ul class="visitor-count">
-        <a class="total-visitors">
-          <p class="total-visitors__title">Total Visitors</p>
-          <p class="total-visitors__count"></p>
-        </a>
-        <a class="day-visitors">
-          Today : <span class="day-visitors__today-count"></span>
-        </a>
-        <a class="day-visitors">
-          Yesterday : <span class="day-visitors__yesterday-count"></span>
-        </a>
-      </ul> -->
     </li>
   </ul>
 </nav>

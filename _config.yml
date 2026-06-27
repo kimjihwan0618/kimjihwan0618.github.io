@@ -18,7 +18,7 @@ minimal_mistakes_skin: "default" # "air", "aqua", "contrast", "dark", "dirt", "n
 locale: "en-US"
 title: "호도로그"
 title_separator: "|"
-subtitle: "프론트엔드 개발자 블로그"
+subtitle: "소프트웨어 개발자 블로그"
 name: "HodoLog"
 description: "호도의 개발기록 블로그입니다."
 url: "https://kimjihwan0618.github.io"

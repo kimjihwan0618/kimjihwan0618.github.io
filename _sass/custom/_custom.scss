@@ -79,41 +79,17 @@ applause-button {
 // visitor-counter
 
 .visitor-count {
-  position: relative;
-  margin-top: 1.5em;
-  padding-top: 1em;
-  border-top: 1px solid #b6b6b6;
+  margin-bottom: 0.5em;
+  text-align: center;
+  color: $text-color;
+  font-size: $type-size-7;
 
-  &:after {
-    position: absolute;
-    content: "";
-    width: 85%;
-    height: 1.5px;
-    background-color: $background-color;
-    right: 0;
-    top: -1px;
+  span + span {
+    margin-left: 0.25em;
   }
 
-  .total-visitors {
-    color: $text-color;
-
-    &__title {
-      margin: 0;
-      font-weight: 600;
-      font-size: 0.85em;
-    }
-
-    &__count {
-      margin: 0 0 0.15em 0;
-      font-weight: bold;
-      font-size: 1.45em;
-    }
-  }
-  .day-visitors {
-    display: block;
-    color: $text-color;
-    font-size: $type-size-6;
-    line-height: 1.5;
-    margin: 0;
+  strong {
+    color: inherit;
+    font-weight: 600;
   }
 }

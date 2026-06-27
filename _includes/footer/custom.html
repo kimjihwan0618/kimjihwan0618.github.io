@@ -1,10 +1,14 @@
 <!-- start custom footer snippets -->
-<div style="text-align: center">
-  <a href="https://hits.seeyoufarm.com">
-    <img
-      src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fkimjihwan0618.github.io&count_bg=%23000000&title_bg=%23000000&icon=openstreetmap.svg&icon_color=%23E7E7E7&title=Visitors&edge_flat=false" />
-  </a>
-  <!-- 방문자 카운트
+<div
+  class="visitor-count"
+  data-visitor-counter
+  data-counter-namespace="kimjihwan0618-github-io-hodolog"
+  data-production-host="kimjihwan0618.github.io"
+  aria-label="블로그 순방문자 수"
+  aria-live="polite">
+  <span>Today <strong data-visitor-today>–</strong></span>
+  <span aria-hidden="true">·</span>
+  <span>Total <strong data-visitor-total>–</strong></span>
 </div>
+<script src="{{ '/assets/js/visitor-counter.js' | relative_url }}" defer></script>
 <!-- end custom footer snippets -->
-</div>
