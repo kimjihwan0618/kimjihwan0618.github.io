@@ -28,11 +28,11 @@
   }
 
   function requestCount(name, shouldIncrement, storageKey) {
-    var endpoint = apiBase + "/" + encodeURIComponent(name);
+    var endpoint = apiBase + "/" + encodeURIComponent(name) + "/";
 
     if (shouldIncrement) {
       window.localStorage.setItem(storageKey, today);
-      endpoint += "/up";
+      endpoint += "up";
     }
 
     return window
