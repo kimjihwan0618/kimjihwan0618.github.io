@@ -26,15 +26,15 @@
         {% endif %} {% endfor %}
       </ul>
       <ul>
-        {% for tag in site.tags %} {% if tag[0] == "regex" %}
+        {% for tag in site.tags %} {% if tag[0] == "python" %}
         <li>
-          <a href="/tags/regex" class="">Regex ({{ tag[1].size }})</a>
+          <a href="/tags/python" class="">Python ({{ tag[1].size }})</a>
         </li>
         {% endif %} {% endfor %}
       </ul>
       <!-- Programming -->
-      <!-- Web Development -->
-      <span class="nav__sub-title">Web Development</span>
+      <!-- Frontend -->
+      <span class="nav__sub-title">Frontend</span>
       <ul>
         {% for tag in site.tags %} {% if tag[0] == "react" %}
         <li>
@@ -42,7 +42,17 @@
         </li>
         {% endif %} {% endfor %}
       </ul>
-      <!-- Web Development -->
+      <!-- Frontend -->
+      <!-- Backend -->
+      <span class="nav__sub-title">Backend</span>
+      <ul>
+        {% for tag in site.tags %} {% if tag[0] == "fastapi" %}
+        <li>
+          <a href="/tags/fastapi" class="">FastAPI ({{ tag[1].size }})</a>
+        </li>
+        {% endif %} {% endfor %}
+      </ul>
+      <!-- Backend -->
       <!-- Development Tools -->
       <span class="nav__sub-title">Development Tools</span>
       <ul>
@@ -66,6 +76,13 @@
         {% for tag in site.tags %} {% if tag[0] == "mariadb" %}
         <li>
           <a href="/tags/mariadb" class="">Maria DB ({{ tag[1].size }})</a>
+        </li>
+        {% endif %} {% endfor %}
+      </ul>
+      <ul>
+        {% for tag in site.tags %} {% if tag[0] == "mssql" %}
+        <li>
+          <a href="/tags/mssql" class="">MSSQL ({{ tag[1].size }})</a>
         </li>
         {% endif %} {% endfor %}
       </ul>
@@ -97,6 +114,16 @@
         {% endif %} {% endfor %}
       </ul>
       <!-- GitHub -->
+      <!-- Etc -->
+      <span class="nav__sub-title">Etc</span>
+      <ul>
+        {% for tag in site.tags %} {% if tag[0] == "regex" %}
+        <li>
+          <a href="/tags/regex" class="">Regex ({{ tag[1].size }})</a>
+        </li>
+        {% endif %} {% endfor %}
+      </ul>
+      <!-- Etc -->
     </li>
   </ul>
 </nav>
