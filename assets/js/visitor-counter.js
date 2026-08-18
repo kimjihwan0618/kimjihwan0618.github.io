@@ -4,11 +4,12 @@
   var counter = document.querySelector("[data-visitor-counter]");
   if (!counter || !window.fetch) return;
 
-  var namespace = counter.getAttribute("data-counter-namespace");
   var productionHost = counter.getAttribute("data-production-host");
   var todayOutput = counter.querySelector("[data-visitor-today]");
   var totalOutput = counter.querySelector("[data-visitor-total]");
-  var apiBase = "https://api.counterapi.dev/v1/" + encodeURIComponent(namespace);
+  var apiEndpoint =
+    "https://hodolog-visitor-counter.wlghks0618.workers.dev/counter" +
+    "?name=first-counter-5078";
   var now = new Date();
   var today = [
     now.getFullYear(),
@@ -27,12 +28,12 @@
     }
   }
 
-  function requestCount(name, shouldIncrement, storageKey) {
-    var endpoint = apiBase + "/" + encodeURIComponent(name) + "/";
+  function requestCounts(shouldIncrement, storageKey) {
+    var endpoint = apiEndpoint;
 
     if (shouldIncrement) {
       window.localStorage.setItem(storageKey, today);
-      endpoint += "up";
+      endpoint += "&increment=true";
     }
 
     return window
@@ -42,28 +43,38 @@
         return response.json();
       })
       .then(function (data) {
-        return Number(data.count).toLocaleString();
+        var todayCount = Number(data.today);
+        var totalCount = Number(data.total);
+        if (!Number.isFinite(todayCount) || !Number.isFinite(totalCount)) {
+          throw new Error("Visitor counter response is invalid");
+        }
+
+        return {
+          today: todayCount.toLocaleString(),
+          total: totalCount.toLocaleString(),
+        };
       })
       .catch(function () {
         if (shouldIncrement && window.localStorage.getItem(storageKey) === today) {
           window.localStorage.removeItem(storageKey);
         }
-        return "–";
+        return {
+          today: "–",
+          total: "–",
+        };
       });
   }
 
   var canStore = storageAvailable();
   var isProduction = window.location.hostname === productionHost;
   var todayStorageKey = "hodolog:visitor:today";
-  var totalStorageKey = "hodolog:visitor:total";
-  var countToday = isProduction && canStore && window.localStorage.getItem(todayStorageKey) !== today;
-  var countTotal = isProduction && canStore && window.localStorage.getItem(totalStorageKey) !== today;
+  var shouldIncrement =
+    isProduction &&
+    canStore &&
+    window.localStorage.getItem(todayStorageKey) !== today;
 
-  Promise.all([
-    requestCount("visitors-" + today, countToday, todayStorageKey),
-    requestCount("visitors-total", countTotal, totalStorageKey),
-  ]).then(function (counts) {
-    todayOutput.textContent = counts[0];
-    totalOutput.textContent = counts[1];
+  requestCounts(shouldIncrement, todayStorageKey).then(function (counts) {
+    todayOutput.textContent = counts.today;
+    totalOutput.textContent = counts.total;
   });
 })();
