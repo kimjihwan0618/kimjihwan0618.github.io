@@ -93,3 +93,75 @@ applause-button {
     font-weight: 600;
   }
 }
+
+// Image-free post cards
+.entries-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+
+  @include breakpoint($medium) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  &::after {
+    display: none;
+  }
+
+  .grid__item {
+    float: none;
+    width: auto;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+
+    &:nth-child(n) {
+      clear: none;
+      margin-left: 0;
+    }
+  }
+
+  .archive__item {
+    height: 100%;
+    padding: 1.25rem;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    background: $background-color;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      border-color: $primary-color;
+      transform: translateY(-2px);
+    }
+  }
+
+  .archive__item-category {
+    display: inline-flex;
+    margin-bottom: 0.75rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    background: mix($primary-color, $background-color, 10%);
+    color: $primary-color;
+    font-size: $type-size-8;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .archive__item-title {
+    margin-top: 0;
+    font-size: $type-size-4;
+    line-height: 1.45;
+  }
+
+  .archive__item-excerpt {
+    margin-bottom: 0;
+    color: $muted-text-color;
+    font-size: $type-size-6;
+    line-height: 1.7;
+  }
+}
+
+// Existing posts may still contain a thumbnail as their first content block.
+.page__content--image-free > p:first-of-type:has(> img:only-child) {
+  display: none;
+}
